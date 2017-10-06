@@ -1,0 +1,63 @@
+<div *ngIf="customer">
+    <form #customerForm="ngForm" (ngSubmit)="updateCustomer()">
+        <div id="customerInfo">
+                <!-- 
+        <input type="text" [value]="customer.name"> <br/>
+        <input type="text" #customer.namebox [value]="customer.name" (input)="customer.name = customer.namebox.value"> <br/>
+        <input type="text" [value]="customer.name" (input)="customer.name = $event.target.value"> <br/>
+        <input type="text"  [value]="customer.name" (keyup.enter)="customer.name = $event.target.value"> <br/>
+        <input type="text"  [value]="customer.name" (keyup.enter)="customer.name = $event.target.value"
+        (blur)="customer.name = $event.target.value"> <br/>
+        <input type="text"  [ngModel]="customer.name" (ngModelChange)="customer.name=$event"> <br/>
+        
+        -->
+            <h1> <button (click)="left()"><</button> {{customer.name}}
+                <button (click)="right()">></button>
+            </h1>
+            <p><i>{{customer.name}} is the {{customer.address.street}} street in the {{customer.address.city}} city in the {{customer.address.region}} region, {{customer.address.state}}.</i></p>
+
+            <div>
+                <fieldset>
+                    <label for="name">Name:
+                    <input type="text" name="name" [(ngModel)]="customer.name">
+            </label>
+                </fieldset>
+            </div>
+
+
+
+            <!-- 
+            Other ways to hide the address
+            <button (click)="addressClicked()">Hide/Show Address</button>
+            <label for=""> Hide/show: <input type="checkbox" [ngModel]="hideAddress" (ngModelChange)="hideAddress=$event"></label>
+        
+        -->
+            <customer-address [address]="customer.address"></customer-address>
+            <h1>
+                    <button type="submit">save changes</button>
+            </h1>
+        
+        </div>
+    </form>
+</div>
+
+<div hidden="true">
+        <label for="favoriteColor" [style.color]="color"> Favorite color: </label> {{color}}
+        <button (click)="toggleColor()">Toggle color</button>
+
+        <!-- 
+        Two ways to do Event binding:
+            1. Using local template variables to get the event values
+            <select #selector (change)="colorChange(selector.value)">
+                 <option>red</option>
+                 <option>green</option>
+                 <option>blue</option>
+            </select>
+            2. using angular $event  - > ($event.target.value) where target is the element where the event occured
+    -->
+        <select (change)="colorChange($event.target.value)">
+        <option>red</option>
+        <option>green</option>
+        <option>blue</option>
+    </select>
+</div>

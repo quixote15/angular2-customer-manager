@@ -1,0 +1,46 @@
+<div>
+    <fieldset>
+        <label for="">
+                Hide/show: <input name="address" type="checkbox" [(ngModel)]="hideAddress">
+        </label>
+    </fieldset>
+
+</div>
+
+<div *ngIf="hideAddress">
+    <fieldset>
+        <label for="">Street:
+            <input name="street" type="text" [(ngModel)]="address.street"> 
+        </label>
+    </fieldset>
+    <fieldset>
+        <label for="">City:
+        <input type="text" name="city" [(ngModel)]="address.city"> 
+        </label>
+    </fieldset>
+    <fieldset>
+        <label for="">State:
+            <select [(ngModel)]="address.state">
+                <option name="state" *ngFor="let state of states">{{state}}</option>
+                
+            </select>
+        </label>
+    </fieldset>
+    <!--
+            <select (change)="setaddress.region($event.target.value)">
+                <option>east</option>
+                <option>west</option>
+                <option>north</option>
+                <option>south</option>
+            </select>
+            -->
+    <fieldset>
+        <label for="">Region:
+        <select [(ngModel)]="address.region">
+            <option *ngFor="let region of regions">{{region}}</option>
+        </select>
+    </label>
+    </fieldset>
+
+
+</div>

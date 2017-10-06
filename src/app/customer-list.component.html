@@ -1,0 +1,26 @@
+<div> 
+        <!-- 
+        Define the img source on a image variable in the component
+        Could also interpolate like this
+        <img src="{{image}}">
+        Or this <img src={{image}}>
+    
+        The favorite color is using a property binding to define the color style of the label
+    -->
+       <div>
+            <h1>Customers</h1>
+            <p>Select a customer ...</p>
+            <ul>
+                <li *ngFor="let cust of customers" 
+                     [ngClass]="{selected: customer === cust}"   (click)="customer=cust">
+                    {{cust.name}}
+                
+                </li>
+            </ul>
+            <div></div>
+           
+       </div>
+
+       <customer-detail [customer]="customer" (shift)="shift($event)"></customer-detail>
+        
+</div>
